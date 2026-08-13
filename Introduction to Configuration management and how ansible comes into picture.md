@@ -1,4 +1,4 @@
-# Day 14: Configuration Management with Ansible
+# Configuration Management with Ansible
 
 ## Overview
 This session covers the foundational concepts of **Configuration Management**, why it is critical in a cloud-native/microservices environment, and how **Ansible** compares to older tools like Puppet and Chef.
