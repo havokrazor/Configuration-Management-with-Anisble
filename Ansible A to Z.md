@@ -1,23 +1,6 @@
-Yes. Now that you’ve provided the **entire transcript**, I can turn it into a GitHub-ready Markdown document.
+# Ansible Practical
 
-I’ll preserve the **same teaching sequence and concepts from the video**, but I’ll paraphrase the spoken content rather than reproduce the transcript verbatim. I’ve also cleaned up obvious transcription errors such as “advert commands” → **ad hoc commands**, “rules” → **roles**, etc.
-
-# Ansible Practical — Day 15
-
-## Introduction
-
-Welcome to Day 15 of the Complete DevOps Course.
-
-In the previous class, we covered the **theory of configuration management**:
-
-* What configuration management is
-* Why Ansible has become an important configuration-management tool
-* How Ansible compares with tools such as Puppet
-* Why Ansible is commonly used in DevOps environments
-
-This session focuses on the **practical side of Ansible**.
-
-We will start from the basics and gradually move toward:
+This session focuses on the **practical side of Ansible**. We will start from the basics and gradually move toward:
 
 1. Installing Ansible
 2. Setting up passwordless SSH authentication
