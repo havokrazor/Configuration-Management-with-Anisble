@@ -48,9 +48,7 @@ Ansible can manage different types of target machines. The important requirement
 
 # 2. Installing Ansible
 
-The first step when working with any tool is to install it.
-
-The official Ansible documentation provides installation instructions for different operating systems and distributions.
+The first step when working with any tool is to install it. The official Ansible documentation provides installation instructions for different operating systems and distributions.
 
 For Ubuntu, the easiest approach is to use the package manager.
 
@@ -94,9 +92,7 @@ Using the system package manager also makes it easier for the executable to be a
 
 # 3. Setting Up Passwordless SSH Authentication
 
-The next important step is configuring communication between the Ansible server and the target server.
-
-Ansible needs to be able to connect to the target machine without manually entering a password every time.
+The next important step is configuring communication between the Ansible server and the target server. Ansible needs to be able to connect to the target machine without manually entering a password every time.
 
 This is generally accomplished using **SSH key-based authentication**.
 
@@ -138,9 +134,7 @@ The important distinction is:
 
 ### Private Key
 
-The private key must be kept secret.
-
-Do **not** share it with other people.
+The private key must be kept secret. Do **not** share it with other people.
 
 ### Public Key
 
@@ -168,9 +162,7 @@ First display the public key:
 cat ~/.ssh/id_rsa.pub
 ```
 
-Copy the output.
-
-Now log in to the target server.
+Copy the output. Now log in to the target server.
 
 The target server has an SSH directory:
 
@@ -256,9 +248,7 @@ For example, if the requirement is simply:
 
 > Create a file on the target server.
 
-It would be unnecessary to create an entire playbook for such a simple operation.
-
-Instead, an Ansible ad hoc command can be used.
+It would be unnecessary to create an entire playbook for such a simple operation. Instead, an Ansible ad hoc command can be used.
 
 ---
 
@@ -335,39 +325,7 @@ ls -ltr
 
 ---
 
-# 11. Understanding `all`
-
-The target portion of the command can be:
-
-```bash
-all
-```
-
-`all` means:
-
-> Execute the command against all hosts defined in the inventory.
-
-For example:
-
-```text
-inventory
-----------------
-172.31.62.28
-172.31.62.29
-172.31.62.30
-```
-
-Running:
-
-```bash
-ansible -i inventory all ...
-```
-
-means that the command will be executed on all three servers.
-
----
-
-# 12. Ad Hoc Commands vs Playbooks
+# 11. Ad Hoc Commands vs Playbooks
 
 This is an important interview question.
 
@@ -405,15 +363,11 @@ Playbook
 
 ---
 
-# 13. Finding Ansible Modules
+# 12. Finding Ansible Modules
 
-Ansible contains a large number of modules.
+Ansible contains a large number of modules. **You do not need to memorize every module.**
 
-You do not need to memorize every module.
-
-The recommended approach is to use the Ansible documentation.
-
-For example, if you want to perform a file-copy operation, search the Ansible modules documentation for the `copy` module.
+The recommended approach is to use the Ansible documentation. For example, if you want to perform a file-copy operation, search the Ansible modules documentation for the `copy` module.
 
 The documentation provides:
 
@@ -426,47 +380,9 @@ This makes it easier to construct commands correctly.
 
 For example, the `copy` module can be used to copy files from the Ansible machine to target machines.
 
-The important lesson is:
-
-> You don't need to know every Ansible module by memory. Learn how to use the documentation effectively.
-
 ---
 
-# 14. Other Ad Hoc Operations
-
-Once the basic ad hoc syntax is understood, you can experiment with different operations.
-
-For example:
-
-### Check the number of CPUs
-
-```bash
-ansible -i inventory all -m shell -a "nproc"
-```
-
-### Check disk information
-
-```bash
-ansible -i inventory all -m shell -a "df -h"
-```
-
-### Create a file
-
-```bash
-ansible -i inventory all -m shell -a "touch devops-class"
-```
-
-You can also investigate modules for:
-
-* Copying files
-* Removing files
-* Executing commands
-* Managing services
-* Managing packages
-
----
-
-# 15. Grouping Servers in the Inventory
+# 13. Grouping Servers in the Inventory
 
 In real environments, you usually have many servers.
 
@@ -477,9 +393,7 @@ You might have:
 * Application servers
 * Monitoring servers
 
-You don't always want to execute every task on every machine.
-
-Ansible allows you to group machines in the inventory.
+You don't always want to execute every task on every machine. Ansible allows you to group machines in the inventory.
 
 For example:
 
@@ -497,15 +411,9 @@ The names inside square brackets define groups.
 
 ---
 
-# 16. Executing Commands Against a Group
+# 14. Executing Commands Against a Group
 
-Instead of using:
-
-```bash
-all
-```
-
-you can specify a group:
+Instead of using `all` in the ansible command you can use the group name where you want the command to be executed, you can specify a group:
 
 ```bash
 web_servers
@@ -542,9 +450,7 @@ Inventory
 
 ---
 
-# 17. Important Interview Question: How Do You Group Servers?
-
-The answer is:
+# 15. Important Interview Question: How Do You Group Servers?
 
 > Servers can be grouped inside the Ansible inventory file. A playbook or ad hoc command can then target a specific group instead of targeting all hosts.
 
@@ -552,14 +458,15 @@ This allows tasks to be executed only against the required machines.
 
 ---
 
-# 18. Writing the First Ansible Playbook
+# 16. Writing the First Ansible Playbook
 
 Now we can move from ad hoc commands to an actual playbook.
 
 The scenario is:
 
-1. Install Nginx
-2. Start Nginx
+1. Install Nginx 
+2. Start Nginx 
+on the target server
 
 Since this contains multiple tasks, a playbook is appropriate.
 
@@ -581,7 +488,7 @@ The three hyphens indicate the beginning of a YAML document.
 
 ---
 
-# 19. Basic Playbook Structure
+# 17. Basic Playbook Structure
 
 The basic structure is:
 
