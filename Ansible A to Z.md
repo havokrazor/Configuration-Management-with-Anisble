@@ -222,9 +222,7 @@ The Ansible host can then communicate with each of those machines using SSH key-
 
 # 7. What Is an Ansible Playbook?
 
-Ansible playbooks are files that define the tasks Ansible should perform.
-
-The idea is similar to other scripting environments:
+Ansible playbooks are files that define the tasks Ansible should perform. The idea is similar to other scripting environments:
 
 | Technology | Script/File  |
 | ---------- | ------------ |
@@ -242,9 +240,7 @@ These are called **Ansible ad hoc commands**.
 
 # 8. Ansible Ad Hoc Commands
 
-Ad hoc commands are useful when you need to perform a small number of tasks.
-
-For example, if the requirement is simply:
+Ad hoc commands are useful when you need to perform a small number of tasks. For example, if the requirement is simply:
 
 > Create a file on the target server.
 
@@ -254,9 +250,7 @@ It would be unnecessary to create an entire playbook for such a simple operation
 
 # 9. Inventory File
 
-Before executing Ansible commands, Ansible needs to know which machines it should manage.
-
-This information is stored in an **inventory file**.
+Before executing Ansible commands, Ansible needs to know which machines it should manage. This information is stored in an **inventory file**.
 
 For example:
 
@@ -510,9 +504,7 @@ Let's understand each section.
 
 ---
 
-# 20. `name`
-
-The `name` field describes what the play or task is doing.
+**`name`** - The `name` field describes what the play or task is doing.
 
 For example:
 
@@ -520,27 +512,11 @@ For example:
 - name: Install and start nginx
 ```
 
-Task names should clearly describe the operation.
-
-For example:
-
-```yaml
-- name: Install nginx
-```
-
-and:
-
-```yaml
-- name: Start nginx
-```
-
-Using meaningful names makes playbooks easier to understand.
+Task names should clearly describe the operation. Using meaningful names makes playbooks easier to understand.
 
 ---
 
-# 21. `hosts`
-
-The `hosts` field determines which machines should execute the play.
+**`hosts`** - The `hosts` field determines which machines should execute the play.
 
 For example:
 
@@ -548,9 +524,7 @@ For example:
 hosts: all
 ```
 
-means that the play should run against all hosts in the inventory.
-
-You can also specify an inventory group:
+means that the play should run against all hosts in the inventory. You can also specify an inventory group:
 
 ```yaml
 hosts: web_servers
@@ -560,11 +534,7 @@ This would execute the play only against the hosts belonging to the `web_servers
 
 ---
 
-# 22. `become`
-
-Some operations require root privileges.
-
-For example, installing packages normally requires elevated privileges.
+**`become`** -  Some operations require root privileges. For example, installing packages normally requires elevated privileges.
 
 Ansible provides:
 
@@ -572,9 +542,7 @@ Ansible provides:
 become: true
 ```
 
-This allows the tasks to be executed with elevated privileges.
-
-The idea is similar to using `sudo` manually.
+This allows the tasks to be executed with elevated privileges. The idea is similar to using `sudo` manually.
 
 For example:
 
@@ -582,15 +550,11 @@ For example:
 sudo apt install nginx
 ```
 
-becomes conceptually similar to using `become` in an Ansible playbook.
-
-You can also use privilege-escalation options to execute tasks as a particular user when required.
+becomes conceptually similar to using `become` in an Ansible playbook. You can also use privilege-escalation options to execute tasks as a particular user when required.
 
 ---
 
-# 23. Defining Tasks
-
-Tasks are defined under:
+**Defining Tasks** -  Tasks are defined under:
 
 ```yaml
 tasks:
