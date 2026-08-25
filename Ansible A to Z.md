@@ -1183,7 +1183,7 @@ Instead of having one massive playbook, related components can be separated logi
 
 ---
 
-# 55. Important Concepts to Remember
+# 33. Important Concepts to Remember
 
 ### Ansible
 
@@ -1231,7 +1231,7 @@ Provides additional information about what Ansible is doing internally.
 
 ---
 
-# 56. Interview Questions Covered by These Concepts
+# 34. Interview Questions Covered by These Concepts
 
 These concepts are useful for common Ansible interview questions, including:
 
@@ -1256,60 +1256,8 @@ These concepts are useful for common Ansible interview questions, including:
 
 ---
 
-# 57. Key Takeaways
-
-The main practical concepts from this lesson are:
-
-```text
-Ansible Installation
-        ↓
-Passwordless SSH
-        ↓
-Inventory
-        ↓
-Ad Hoc Commands
-        ↓
-Inventory Groups
-        ↓
-Playbooks
-        ↓
-Modules
-        ↓
-Privilege Escalation
-        ↓
-Playbook Execution
-        ↓
-Verbose Debugging
-        ↓
-Roles
-        ↓
-Ansible Galaxy
-```
-
-The most important thing at this stage is **practice**.
-
-Start with simple ad hoc commands, then write your first playbook, and only after becoming comfortable with those concepts move toward Ansible roles and more complex real-world configurations.
+world configurations.
 
 For larger projects, roles provide the structure needed to keep playbooks organized, reusable, and maintainable.
 
 ---
-
-# 58. Suggested Next Step
-
-After completing these exercises, practice an existing role-based Ansible example.
-
-A JBoss Standalone example is a useful starting point because it demonstrates how a more complex application configuration can be separated into an Ansible role rather than placing every task inside a single playbook.
-
-Once you are comfortable with roles, move toward larger examples such as Kubernetes configuration.
-
-For interview preparation, also review scenario-based Ansible questions involving:
-
-* Roles
-* Handlers
-* Variables
-* Inventory
-* Modules
-* Complex deployments
-* Real-world automation scenarios
-
-The goal is not to memorize every Ansible module. The goal is to understand **how Ansible is structured, how to find the correct module/documentation, how to organize automation, and how to troubleshoot what Ansible is doing**.
