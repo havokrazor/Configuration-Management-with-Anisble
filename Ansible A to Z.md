@@ -577,7 +577,7 @@ The indentation is important because YAML relies heavily on indentation.
 
 ---
 
-# 24. Installing Nginx
+# 18. Installing Nginx
 
 There are multiple ways to install Nginx.
 
@@ -605,7 +605,7 @@ Using an Ansible module is generally preferable to manually constructing shell c
 
 ---
 
-# 25. Starting Nginx
+# 19. Starting Nginx
 
 Similarly, you could use a shell command:
 
@@ -627,7 +627,7 @@ This describes the desired state rather than simply executing a shell command.
 
 ---
 
-# 26. Complete First Playbook
+# 20. Complete First Playbook
 
 The complete playbook can therefore be structured as:
 
@@ -656,51 +656,7 @@ This playbook contains two main tasks:
 
 ---
 
-# 27. Why Use Modules Instead of Shell Commands?
-
-You could execute:
-
-```bash
-apt install nginx
-```
-
-through the shell module.
-
-However, when Ansible already provides a module for the operation, using the module is generally better.
-
-For example:
-
-```yaml
-apt:
-  name: nginx
-  state: present
-```
-
-is preferable to:
-
-```yaml
-shell: apt install nginx
-```
-
-The module provides a structured way to describe the desired configuration.
-
-The same principle applies to services:
-
-```yaml
-service:
-  name: nginx
-  state: started
-```
-
-rather than:
-
-```yaml
-shell: systemctl start nginx
-```
-
----
-
-# 28. Executing an Ansible Playbook
+# 21. Executing an Ansible Playbook
 
 There is an important difference between the commands used for ad hoc operations and playbooks.
 
@@ -736,19 +692,14 @@ If you use the default inventory location, you may not need to specify `-i`.
 
 ---
 
-# 29. Understanding Playbook Execution
+# 22. Understanding Playbook Execution
 
 When the playbook is executed, Ansible performs several operations.
 
-The first task you may see is:
+The first task you may see is: **Gathering Facts**
 
-```text
-Gathering Facts
-```
 
-This happens before the tasks defined in the playbook.
-
-Ansible collects information about the target machine.
+This happens before the tasks defined in the playbook. Ansible collects information about the target machine.
 
 This information can include details about:
 
@@ -772,7 +723,7 @@ Start nginx
 
 ---
 
-# 30. Verifying Nginx
+# 23. Verifying Nginx
 
 After the playbook finishes, connect to the target server and verify the service.
 
@@ -791,24 +742,7 @@ This confirms that the Ansible playbook successfully:
 
 ---
 
-# 31. Understanding Ansible Output
-
-Ansible reports the status of each task.
-
-Successful operations are displayed accordingly, while errors are clearly reported.
-
-The output makes it possible to determine:
-
-* Which task executed
-* Whether it changed anything
-* Whether the task failed
-* Which hosts were affected
-
-This is useful when troubleshooting playbooks.
-
----
-
-# 32. Verbose Mode
+# 24. Verbose Mode
 
 Ansible provides verbosity options for understanding what is happening internally.
 
@@ -832,11 +766,9 @@ Higher verbosity provides more debugging information.
 
 ---
 
-# 33. Why Use Verbose Mode?
+**Why Use Verbose Mode?**
 
-Normal output tells you whether the playbook succeeded.
-
-Verbose output helps you understand **how Ansible performed the operation**.
+Normal output tells you whether the playbook succeeded.Verbose output helps you understand **how Ansible performed the operation**.
 
 It can show information about:
 
@@ -855,7 +787,7 @@ Verbose mode is especially useful while learning Ansible because it helps you un
 
 ---
 
-# 34. Ansible's Python Dependency
+# 25. Ansible's Python Dependency
 
 Ansible commonly relies on Python on the target machine for module execution.
 
@@ -872,21 +804,9 @@ Understanding these internal operations becomes useful if you later want to deve
 
 ---
 
-# 35. Moving Beyond Basic Playbooks
+# 26. Moving Beyond Basic Playbooks
 
-At this point, we have learned the basics:
-
-* Install Ansible
-* Configure SSH
-* Create an inventory
-* Run ad hoc commands
-* Group servers
-* Create playbooks
-* Use modules
-* Execute playbooks
-* Use verbosity for debugging
-
-However, real-world Ansible configurations can become significantly more complicated.
+At this point, we have learned the basic, However real-world Ansible configurations can become significantly more complicated.
 
 For example, consider a Kubernetes environment.
 
@@ -900,13 +820,7 @@ Create 3 EC2 instances
         +--> Configure 2 as worker nodes
 ```
 
-This involves multiple types of operations.
-
----
-
-# 36. Terraform and Ansible
-
-A common DevOps approach is to divide responsibilities between Terraform and Ansible.
+This involves multiple types of operations. A common DevOps approach is to divide responsibilities between **Terraform and Ansible.**
 
 ### Terraform
 
@@ -939,11 +853,9 @@ A useful analogy is that multiple tools might technically accomplish the same ta
 
 ---
 
-# 37. The Problem With Large Playbooks
+# 27. The Problem With Large Playbooks
 
-A Kubernetes configuration can contain many tasks.
-
-Instead of two tasks like our Nginx example, a real configuration could contain:
+A Kubernetes configuration can contain many tasks. Instead of two tasks like our Nginx example, a real configuration could contain:
 
 * Package installation
 * Configuration files
@@ -973,7 +885,7 @@ This is where **Ansible Roles** become useful.
 
 ---
 
-# 38. What Are Ansible Roles?
+# 28. What Are Ansible Roles?
 
 Ansible Roles provide a structured and efficient way to organize complex playbooks.
 
@@ -997,7 +909,7 @@ Roles make complex Ansible projects easier to maintain.
 
 ---
 
-# 39. Creating an Ansible Role
+# 29. Creating an Ansible Role
 
 Ansible Galaxy provides a command for initializing a role.
 
@@ -1042,7 +954,7 @@ The generated structure provides a standard way of organizing the role.
 
 ---
 
-# 40. Ansible Role Directory Structure
+# 30. Ansible Role Directory Structure
 
 The main components are:
 
@@ -1064,7 +976,7 @@ Let's understand the purpose of each.
 
 ---
 
-# 41. `tasks/`
+**`tasks/`**
 
 The `tasks` directory contains the actual tasks performed by the role.
 
@@ -1075,13 +987,11 @@ tasks/
 └── main.yml
 ```
 
-Instead of placing all tasks directly inside the main playbook, the tasks can be organized inside the role.
-
-This keeps the parent playbook much cleaner.
+Instead of placing all tasks directly inside the main playbook, the tasks can be organized inside the role. This keeps the parent playbook much cleaner.
 
 ---
 
-# 42. `defaults/`
+**`defaults/`**
 
 The `defaults` directory is used for default variables.
 
@@ -1096,7 +1006,7 @@ Variables that provide default values for the role can be stored here.
 
 ---
 
-# 43. `vars/`
+**`vars/`**
 
 The `vars` directory is another location for variables.
 
@@ -1113,7 +1023,7 @@ The distinction between `defaults` and `vars` is an important topic to understan
 
 ---
 
-# 44. `files/`
+**`files/`**
 
 The `files` directory can contain files that need to be copied to target machines.
 
@@ -1135,7 +1045,7 @@ A task can then use these files when configuring the target server.
 
 ---
 
-# 45. `templates/`
+**`templates/`**
 
 The `templates` directory is used for templates.
 
@@ -1154,7 +1064,7 @@ A template can contain variables that Ansible fills in during execution.
 
 ---
 
-# 46. `handlers/`
+**`handlers/`**
 
 Handlers are used when you need to respond to particular changes or events.
 
@@ -1178,7 +1088,7 @@ Task changes configuration
 
 ---
 
-# 47. `tests/`
+**`tests/`**
 
 The `tests` directory is intended for testing the role.
 
@@ -1188,7 +1098,7 @@ This makes it possible to validate that a role behaves as expected.
 
 ---
 
-# 48. `meta/`
+**`meta/`**
 
 The `meta` directory contains metadata about the role.
 
@@ -1203,24 +1113,7 @@ This becomes particularly useful when roles are shared with the broader Ansible 
 
 ---
 
-# 49. `README.md`
-
-The `README.md` file provides documentation for the role.
-
-It can explain:
-
-* What the role does
-* How to use it
-* Required variables
-* Configuration
-* Examples
-* Other important information
-
-This is especially useful when other people need to understand or reuse the role.
-
----
-
-# 50. Parent Playbook and Roles
+# 31. Parent Playbook and Roles
 
 When using roles, the main playbook can remain relatively simple.
 
@@ -1248,7 +1141,7 @@ This separates the main orchestration from the detailed implementation.
 
 ---
 
-# 51. Example Role-Based Organization
+**Example Role-Based Organization**
 
 A project might look like:
 
@@ -1272,7 +1165,7 @@ The parent playbook can then reference the role rather than containing every tas
 
 ---
 
-# 52. Why Roles Improve Ansible Projects
+# 32. Why Roles Improve Ansible Projects
 
 Roles are especially useful when the playbook becomes large.
 
@@ -1287,234 +1180,6 @@ They provide:
 * A standard directory structure
 
 Instead of having one massive playbook, related components can be separated logically.
-
----
-
-# 53. Practical Learning Path
-
-The recommended progression is:
-
-```text
-1. Install Ansible
-        ↓
-2. Configure passwordless SSH
-        ↓
-3. Create an inventory
-        ↓
-4. Practice ad hoc commands
-        ↓
-5. Group servers
-        ↓
-6. Write basic playbooks
-        ↓
-7. Execute playbooks
-        ↓
-8. Use modules
-        ↓
-9. Learn verbose/debug output
-        ↓
-10. Learn roles
-        ↓
-11. Practice real-world role-based projects
-```
-
-Do not jump directly into complicated roles without understanding the basics first.
-
----
-
-# 54. Practice Exercises
-
-The practical exercises from this lesson should be repeated independently.
-
-## Exercise 1 — Install Ansible
-
-Install Ansible on a Linux machine:
-
-```bash
-sudo apt update
-sudo apt install ansible
-```
-
-Verify:
-
-```bash
-ansible --version
-```
-
----
-
-## Exercise 2 — Configure SSH
-
-Generate an SSH key:
-
-```bash
-ssh-keygen
-```
-
-Copy the public key:
-
-```bash
-cat ~/.ssh/id_rsa.pub
-```
-
-Add it to the target server's:
-
-```text
-~/.ssh/authorized_keys
-```
-
-Then verify:
-
-```bash
-ssh <target-ip>
-```
-
-The connection should work without a password.
-
----
-
-## Exercise 3 — Create an Inventory
-
-Create an inventory file:
-
-```text
-inventory
-```
-
-Add the target server's IP address.
-
-Example:
-
-```text
-172.31.62.28
-```
-
----
-
-## Exercise 4 — Run an Ad Hoc Command
-
-Try:
-
-```bash
-ansible -i inventory all -m shell -a "nproc"
-```
-
-Then:
-
-```bash
-ansible -i inventory all -m shell -a "df -h"
-```
-
-And create a file:
-
-```bash
-ansible -i inventory all -m shell -a "touch devops-class"
-```
-
-Verify the file on the target server.
-
----
-
-## Exercise 5 — Create Inventory Groups
-
-Create groups such as:
-
-```ini
-[db_servers]
-172.31.62.101
-172.31.62.102
-
-[web_servers]
-172.31.62.100
-172.31.62.103
-```
-
-Run commands against only the web servers:
-
-```bash
-ansible -i inventory web_servers -m shell -a "nproc"
-```
-
----
-
-## Exercise 6 — Write the Nginx Playbook
-
-Create:
-
-```text
-first-playbook.yaml
-```
-
-Write a playbook that:
-
-1. Targets the required hosts
-2. Uses privilege escalation
-3. Installs Nginx
-4. Starts Nginx
-
-Execute it using:
-
-```bash
-ansible-playbook -i inventory first-playbook.yaml
-```
-
-Verify:
-
-```bash
-sudo systemctl status nginx
-```
-
----
-
-## Exercise 7 — Use Verbose Mode
-
-Run the playbook with additional verbosity:
-
-```bash
-ansible-playbook -vvv -i inventory first-playbook.yaml
-```
-
-Observe:
-
-* SSH connection details
-* Fact gathering
-* Python-related operations
-* Module execution
-* Task results
-
-This is a useful way to understand what Ansible is doing internally.
-
----
-
-## Exercise 8 — Create a Role
-
-Initialize a role:
-
-```bash
-ansible-galaxy role init kubernetes
-```
-
-Inspect the generated structure:
-
-```bash
-ls kubernetes
-```
-
-Then explore:
-
-```text
-defaults/
-files/
-handlers/
-meta/
-tasks/
-templates/
-tests/
-vars/
-README.md
-```
-
-Understand what each directory is responsible for.
 
 ---
 
